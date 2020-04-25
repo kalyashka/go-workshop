@@ -10,10 +10,13 @@ import (
 )
 
 func main() {
-	h := Handler.NewHandler()
+	h := handler.NewHandler()
 	r := chi.NewRouter()
 	r.Get("/hello", h.Hello)
 
+	log.Print("Starting server")
 	err := http.ListenAndServe(":8080", r)
 	log.Fatal(err)
+
+	log.Print("shutting down")
 }
